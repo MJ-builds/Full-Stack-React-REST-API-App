@@ -1,5 +1,6 @@
 import { useContext } from "react";
 
+//TODO: PLENTY - Shell only. From markup.
 const Header = () => {
   return (
     <header>

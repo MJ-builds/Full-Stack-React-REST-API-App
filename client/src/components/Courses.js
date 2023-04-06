@@ -1,34 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useCourseContext } from "../context/CourseContext";
 
 const Courses = () => {
-  const [courses, setCourses] = useState([]);
-
-  const fetchCourses = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/courses');
-      setCourses(response.data);
-    } catch (error) {
-      console.error('Error fetching courses:', error);
-    }
-  };
+  const { courses, fetchCourses } = useCourseContext();
 
   useEffect(() => {
-    fetchCourses();
-  }, []);
+    if(courses.length === 0) {
+        fetchCourses();
+    }
+  }, [courses, fetchCourses]);
 
   return (
     <main>
       <div className="wrap main--grid">
         {courses.map(course => (
-          <a
+          <NavLink
             key={course.id}
             className="course--module course--link"
-            href={`/course-detail/${course.id}`}
+            to={`/courses/${course.id}`}
           >
             <h2 className="course--label">Course</h2>
             <h3 className="course--title">{course.title}</h3>
-          </a>
+            </NavLink>
         ))}
         <a className="course--module course--add--module" href="create-course.html">
           <span className="course--add--title">
