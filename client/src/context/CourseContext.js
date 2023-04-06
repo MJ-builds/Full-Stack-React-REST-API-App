@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useCallback } from 'react';
+import { createContext, useState, useContext } from 'react';
 import axios from 'axios';
 
 const CourseContext = createContext();
