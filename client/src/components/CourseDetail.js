@@ -31,34 +31,49 @@ number to get it to work. Code from a prior TH project helped */
   }
 
   return (
-    <div className="wrap">
-      <h2>Course Detail</h2>
-      <form>
-        <div className="main--flex">
-          <div>
-            <h3 className="course--detail--title">Course</h3>
-            <h4 className="course--name">{course.title}</h4>
-            <p>By {course.author}</p>
-            {course.description.split("\n").map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </div>
-          <div>
-            <h3 className="course--detail--title">Estimated Time</h3>
-            <p>{course.estimatedTime}</p>
-            <h3 className="course--detail--title">Materials Needed</h3>
-            <ul className="course--detail--list">
-            {/* Accounting for null values in the database for materialsNeeded */}
-              {course.materialsNeeded
-                ? course.materialsNeeded
-                    .split("\n")
-                    .map((item, index) => <li key={index}>{item}</li>)
-                : null}
-            </ul>
-          </div>
+    <React.Fragment>
+      <div className="actions--bar">
+        <div className="wrap">
+          <a className="button" href="update-course.html">
+            Update Course
+          </a>
+          <a className="button" href="#">
+            Delete Course
+          </a>
+          <a className="button button-secondary" href="/">
+            Return to List
+          </a>
         </div>
-      </form>
-    </div>
+      </div>
+      <div className="wrap">
+        <h2>Course Detail</h2>
+        <form>
+          <div className="main--flex">
+            <div>
+              <h3 className="course--detail--title">Course</h3>
+              <h4 className="course--name">{course.title}</h4>
+              <p>By {course.author}</p>
+              {course.description.split("\n").map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+            <div>
+              <h3 className="course--detail--title">Estimated Time</h3>
+              <p>{course.estimatedTime}</p>
+              <h3 className="course--detail--title">Materials Needed</h3>
+              <ul className="course--detail--list">
+                {/* Accounting for null values in the database for materialsNeeded */}
+                {course.materialsNeeded
+                  ? course.materialsNeeded
+                      .split("\n")
+                      .map((item, index) => <li key={index}>{item}</li>)
+                  : null}
+              </ul>
+            </div>
+          </div>
+        </form>
+      </div>
+    </React.Fragment>
   );
 };
 

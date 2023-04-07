@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 
 //TODO: PLENTY - Shell only. From markup.
 const Header = () => {
@@ -11,10 +11,11 @@ const Header = () => {
         <nav>
           <ul className="header--signedout">
             <li>
-              <a href="/">Sign Up</a>
+              <a href="/signup">Sign Up</a>
             </li>
             <li>
-              <a href="/">Sign In</a>
+            {/* amend link name potentially */}
+              <a href="/signin">Sign In</a>
             </li>
           </ul>
         </nav>
