@@ -3,6 +3,10 @@ import axios from 'axios';
 
 const CourseContext = createContext();
 
+export const useCourseContext = () => {
+    return useContext(CourseContext);
+  };
+
 export const CourseProvider = ({ children }) => {
   const [courses, setCourses] = useState([]);
 
@@ -31,6 +35,3 @@ export const CourseProvider = ({ children }) => {
   );
 };
 
-export const useCourseContext = () => {
-  return useContext(CourseContext);
-};
