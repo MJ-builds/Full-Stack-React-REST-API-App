@@ -16,7 +16,6 @@ function App() {
   return (
     <Router>
       <Header />
-        <CourseProvider>
           <Routes>
             <Route path="/" element={<Courses />} />
             <Route path="/courses/:courseId" element={<CourseDetail />} />
@@ -24,7 +23,6 @@ function App() {
             <Route path = "/signup" element = {<UserSignUp />} />
             <Route path = "/courses/create" element = {<CreateCourse />} />
           </Routes>
-        </CourseProvider>
     </Router>
   );
 }
