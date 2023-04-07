@@ -1,13 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './styles/global.css'; // Import the global styles
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./styles/global.css"; // Import the global styles
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import UserProvider from "./context/UserContext";
+import {CourseProvider} from "./context/CourseContext";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <UserProvider>
+      <CourseProvider>
+        <App />
+      </CourseProvider>
+    </UserProvider>
   </React.StrictMode>
 );
 
