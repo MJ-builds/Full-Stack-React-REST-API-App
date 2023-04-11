@@ -1,12 +1,14 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 
 
 const UpdateCourse = () => {
+    const navigate = useNavigate();
 
     //Just a simple placeholder while fleshing out the rest of the app
   const handleCancelClick = (event) => {
     event.preventDefault();
-    window.location.href = '/';
+    navigate('/');
   };
 
     return (

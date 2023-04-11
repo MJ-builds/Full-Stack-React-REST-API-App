@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { useCourseContext } from "../context/CourseContext";
 
 const CourseDetail = () => {
@@ -34,15 +34,15 @@ number to get it to work. Code from a prior TH project helped */
     <React.Fragment>
       <div className="actions--bar">
         <div className="wrap">
-          <a className="button" href="update-course.html">
+        <NavLink className="button" to={`/courses/${course.id}/update`}>
             Update Course
-          </a>
-          <a className="button" href="#">
+          </NavLink>
+          <NavLink className="button" to="#">
             Delete Course
-          </a>
-          <a className="button button-secondary" href="/">
+          </NavLink>
+          <NavLink className="button button-secondary" to="/">
             Return to List
-          </a>
+          </NavLink>
         </div>
       </div>
       <div className="wrap">
@@ -52,7 +52,7 @@ number to get it to work. Code from a prior TH project helped */
             <div>
               <h3 className="course--detail--title">Course</h3>
               <h4 className="course--name">{course.title}</h4>
-              <p>By {course.author}</p>
+              <p>By {course.user.firstName} {course.user.lastName}</p>
               {course.description.split("\n").map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}

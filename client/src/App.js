@@ -8,8 +8,7 @@ import CourseDetail from './components/CourseDetail';
 import UserSignIn from './components/UserSignIn';
 import UserSignUp from './components/UserSignUp';
 import CreateCourse from './components/CreateCourse';
-
-import { CourseProvider } from "./context/CourseContext";
+import UpdateCourse from './components/UpdateCourse';
 
 //TODO: Add Routes and PrivateRoute components
 function App() {
@@ -22,6 +21,7 @@ function App() {
             <Route path = "/signin" element = {<UserSignIn />} />
             <Route path = "/signup" element = {<UserSignUp />} />
             <Route path = "/courses/create" element = {<CreateCourse />} />
+            <Route path = "/courses/:courseId/update" element = {<UpdateCourse />} />
           </Routes>
     </Router>
   );
