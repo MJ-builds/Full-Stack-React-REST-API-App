@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { useCourseContext } from "../context/CourseContext";
+import { useUserContext } from "../context/UserContext";
 
 const CourseDetail = () => {
   const { courseId } = useParams();
   const { courses, fetchCourses } = useCourseContext();
   const [loading, setLoading] = useState(true);
+  const {authenticatedUser} = useUserContext();
 
   /* I struggled with this for a while. I was getting an error that
 courseId was undefined. I was passing in the courseId as a string, 
@@ -34,12 +36,16 @@ number to get it to work. Code from a prior TH project helped */
     <React.Fragment>
       <div className="actions--bar">
         <div className="wrap">
-        <NavLink className="button" to={`/courses/${course.id}/update`}>
+        {authenticatedUser && authenticatedUser.id === course.userId ? (
+          <NavLink className="button" to={`/courses/${course.id}/update`}>
             Update Course
           </NavLink>
+        ) : null}
+        {authenticatedUser && authenticatedUser.id === course.userId ? (
           <NavLink className="button" to="#">
             Delete Course
           </NavLink>
+          ) : null}
           <NavLink className="button button-secondary" to="/">
             Return to List
           </NavLink>
