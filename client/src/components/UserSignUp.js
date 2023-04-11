@@ -1,12 +1,14 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 
 //TODO: PLENTY - Shell only. From markup.
 const UserSignUp = () => {
-    
+  const navigate = useNavigate();  
+
   const handleCancelClick = (event) => {
     event.preventDefault();
     //Just a simple placeholder while fleshing out the rest of the app
-    window.location.href = '/';
+    navigate('/');
   };
 
   return (
