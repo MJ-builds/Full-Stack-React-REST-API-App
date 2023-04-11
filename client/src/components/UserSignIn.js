@@ -1,33 +1,40 @@
-import React, {useState} from 'react';
-
-import { useUserContext } from '../context/UserContext';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../context/UserContext";
 
 //TODO: PLENTY - Shell only. From markup.
 const UserSignIn = () => {
+  //adding authenticatedUser for testing. Will remove later
+  const navigate = useNavigate();
+  const { signIn, authenticatedUser } = useUserContext();
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
 
-    //adding authenticatedUser for testing. Will remove later
-    const { signIn, authenticatedUser } = useUserContext();
-    const [emailAddress, setEmailAddress] = useState('');
-    const [password, setPassword] = useState('');
+  
+  const handleEmailChange = (event) => {
+    setEmailAddress(event.target.value);
+  };
 
-    const handleEmailChange = (event) => {
-        setEmailAddress(event.target.value);
-      };
-    
-      const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-      };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
-      const handleSubmit = async (event) => {
-        event.preventDefault();
-        await signIn(emailAddress, password);
-      };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const isSignedIn = await signIn(emailAddress, password);
+    if (isSignedIn) {
+      navigate("/");
+    } else {
+      console.log("Sign-in failed");
+    }
+  };
 
-    //Just a simple placeholder while fleshing out the rest of the app
+  //Just a simple placeholder while fleshing out the rest of the app
   const handleCancelClick = (event) => {
     event.preventDefault();
-    window.location.href = '/';
+    navigate("/");
   };
+  
 
   //testing authenticatedUser - to be removed later
   if (authenticatedUser) {
@@ -65,8 +72,7 @@ const UserSignIn = () => {
         </button>
       </form>
       <p>
-        Don't have a user account? Click here to{' '}
-        <a href="/signup">sign up</a>!
+        Don't have a user account? Click here to <a href="/signup">sign up</a>!
       </p>
     </div>
   );

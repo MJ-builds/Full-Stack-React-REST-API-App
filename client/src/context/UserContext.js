@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const UserContext = createContext();
 
@@ -8,7 +9,10 @@ export const useUserContext = () => {
 };
 
 const UserProvider = ({ children }) => {
-  const [authenticatedUser, setAuthenticatedUser] = useState(null);
+  const [authenticatedUser, setAuthenticatedUser] = useState(() => {
+    const storedUser = Cookies.get("authenticatedUser");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
 
   const signIn = async (emailAddress, password) => {
     try {
@@ -19,11 +23,18 @@ const UserProvider = ({ children }) => {
       });
 
       if (response.status === 200) {
-        setAuthenticatedUser({
+        const authenticatedUserData = {
           ...response.data,
           emailAddress: emailAddress,
           password: password,
-        });
+        };
+        setAuthenticatedUser(authenticatedUserData);
+        Cookies.set(
+          "authenticatedUser",
+          JSON.stringify(authenticatedUserData),
+          { expires: 1 }
+        ); // Set the cookie to expire in 1 day
+        return true;
       } else {
         setAuthenticatedUser(null);
       }
@@ -38,6 +49,7 @@ const UserProvider = ({ children }) => {
 
   const signOut = () => {
     setAuthenticatedUser(null);
+    Cookies.remove("authenticatedUser");
   };
 
   const value = {
