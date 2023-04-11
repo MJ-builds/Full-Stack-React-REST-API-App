@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 
 const CourseContext = createContext();
@@ -9,6 +9,7 @@ export const useCourseContext = () => {
 
 export const CourseProvider = ({ children }) => {
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   /* Fetch courses from API - ok for now but may need to adjust later
    when additional components added. Just wanted simple logic 
@@ -26,10 +27,19 @@ export const CourseProvider = ({ children }) => {
       console.error('Error fetching courses:', error);
     }
   };
+
+  const refetchCourses = () => {
+    setLoading(true);
+    fetchCourses();
+  };
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
   
 
   return (
-    <CourseContext.Provider value={{ courses, setCourses, fetchCourses }}>
+    <CourseContext.Provider value={{ courses, setCourses, fetchCourses, loading, refetchCourses }}>
       {children}
     </CourseContext.Provider>
   );

@@ -34,15 +34,6 @@ const UserSignIn = () => {
     event.preventDefault();
     navigate("/");
   };
-  
-
-  //testing authenticatedUser - to be removed later
-  if (authenticatedUser) {
-    console.log("User ID:", authenticatedUser.id);
-    console.log("User First Name:", authenticatedUser.firstName);
-    console.log("User Last Name:", authenticatedUser.lastName);
-    console.log("User Email Address:", authenticatedUser.emailAddress);
-  }
 
   return (
     <div className="form--centered">

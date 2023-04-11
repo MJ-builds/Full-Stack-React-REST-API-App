@@ -24,7 +24,7 @@ const CreateCourse = () => {
     let errors = [];
 
     if (!courseTitle) {
-      errors.push("Please provide a value for 'Titlexx'");
+      errors.push("Please provide a value for 'Title'");
     }
 
     if (!courseDescription) {
