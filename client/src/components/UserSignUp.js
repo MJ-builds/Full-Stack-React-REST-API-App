@@ -1,13 +1,11 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, NavLink, Link } from 'react-router-dom';
 
-//TODO: PLENTY - Shell only. From markup.
 const UserSignUp = () => {
   const navigate = useNavigate();  
 
   const handleCancelClick = (event) => {
     event.preventDefault();
-    //Just a simple placeholder while fleshing out the rest of the app
     navigate('/');
   };
 
@@ -32,7 +30,7 @@ const UserSignUp = () => {
       </form>
       <p>
         Already have a user account? Click here to{' '}
-        <a href="/signin  ">sign in</a>!
+        <Link to="/signin  ">sign in</Link>!
       </p>
     </div>
   );
