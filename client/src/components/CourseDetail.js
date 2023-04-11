@@ -1,28 +1,63 @@
 import React, { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, useNavigate } from "react-router-dom";
 import { useCourseContext } from "../context/CourseContext";
 import { useUserContext } from "../context/UserContext";
+import axios from "axios";
 
 const CourseDetail = () => {
+  const navigate = useNavigate();
   const { courseId } = useParams();
-  const { courses, fetchCourses } = useCourseContext();
+  const { courses } = useCourseContext();
+  const { refetchCourses } = useCourseContext();
   const [loading, setLoading] = useState(true);
   const {authenticatedUser} = useUserContext();
 
-  /* I struggled with this for a while. I was getting an error that
-courseId was undefined. I was passing in the courseId as a string, 
-but the course.id was a number. I had to parse the courseId to a 
-number to get it to work. Code from a prior TH project helped */
   const parsedCourseId = parseInt(courseId, 10);
   const course = courses.find((course) => course.id === parsedCourseId);
 
+
+  const deleteCourse = async () => {
+
+  if (authenticatedUser) {
+    const { emailAddress, password } = authenticatedUser;
+
+    try {
+      const response = await axios.delete(
+        `http://localhost:5000/api/courses/${courseId}`,
+        {
+          headers: {
+            Authorization: `Basic ${btoa(`${emailAddress}:${password}`)}`,
+          },
+        }
+      );
+
+      if (response.status === 204) {
+      } else {
+        console.error("An error occurred while attempting to delete the course");
+      }
+    } catch (error) {
+      console.error("An error occurred while attempting to delete the course", error);
+    }
+  } else {
+    console.error("User is not authenticated");
+  }
+}
+
+const handleDeleteCourse = async () => {
+  if (window.confirm("Are you sure you want to delete this course?")) {
+    // call the function to delete the course
+    await deleteCourse();
+    refetchCourses();
+    navigate(`/`);
+  }
+};
+
+
   useEffect(() => {
-    if (!course) {
-      fetchCourses(parsedCourseId).then(() => setLoading(false));
-    } else {
+    if (course) {
       setLoading(false);
     }
-  }, [parsedCourseId, fetchCourses]);
+  }, [course]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -42,7 +77,7 @@ number to get it to work. Code from a prior TH project helped */
           </NavLink>
         ) : null}
         {authenticatedUser && authenticatedUser.id === course.userId ? (
-          <NavLink className="button" to="#">
+          <NavLink className="button" onClick ={handleDeleteCourse}>
             Delete Course
           </NavLink>
           ) : null}

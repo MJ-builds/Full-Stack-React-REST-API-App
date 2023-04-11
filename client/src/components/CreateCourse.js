@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import { useCourseContext } from "../context/CourseContext";
 import { useUserContext } from "../context/UserContext";
 
 const CreateCourse = () => {
   const navigate = useNavigate();
+  const { refetchCourses } = useCourseContext();
   const { authenticatedUser } = useUserContext();
   const [courseTitle, setCourseTitle] = useState("");
   const [courseDescription, setCourseDescription] = useState("");
@@ -57,6 +59,7 @@ const CreateCourse = () => {
         );
 
         if (response.status === 201) {
+            refetchCourses();
           navigate('/');
         } else {
           console.error("An error occurred while creating the course");

@@ -20,16 +20,15 @@ const UpdateCourse = () => {
   const [courseDescription, setCourseDescription] = useState('');
   const [estimatedTime, setEstimatedTime] = useState('');
   const [materialsNeeded, setMaterialsNeeded] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState([]);
-
 
   useEffect(() => {
     if (course) {
       setCourseTitle(course.title);
       setCourseDescription(course.description);
-      setEstimatedTime(course.estimatedTime);
-      setMaterialsNeeded(course.materialsNeeded);
+      setEstimatedTime(course.estimatedTime || '');
+      setMaterialsNeeded(course.materialsNeeded || '');
       setLoading(false);
     }
 },[course]);
@@ -94,10 +93,6 @@ if (loading) {
       console.error("User is not authenticated");
     }
   };
-
-//   if (loading) {
-//     return <p>Loading...</p>;
-//   }
 
   return (
     <div className="wrap">
