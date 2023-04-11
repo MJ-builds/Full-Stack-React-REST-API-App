@@ -11,14 +11,30 @@ const CreateCourse = () => {
   const [courseDescription, setCourseDescription] = useState("");
   const [estimatedTime, setEstimatedTime] = useState("");
   const [materialsNeeded, setMaterialsNeeded] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const handleCancelClick = (event) => {
     event.preventDefault();
-    navigate('/');
+    navigate("/");
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    let errors = [];
+
+    if (!courseTitle) {
+      errors.push("Please provide a value for 'Titlexx'");
+    }
+
+    if (!courseDescription) {
+      errors.push("Please provide a value for 'Description'");
+    }
+
+    if (errors.length > 0) {
+      setErrors(errors);
+      return;
+    }
 
     if (authenticatedUser) {
       const { emailAddress, password, id: userId } = authenticatedUser;
@@ -41,9 +57,7 @@ const CreateCourse = () => {
         );
 
         if (response.status === 201) {
-          // Redirect to the new course or another appropriate page
-          //not working - to fix:
-          navigate(`/courses/${response.data.id}`);
+          navigate('/');
         } else {
           console.error("An error occurred while creating the course");
         }
@@ -54,19 +68,20 @@ const CreateCourse = () => {
       console.error("User is not authenticated");
     }
   };
-  //test
-  console.log(authenticatedUser)
 
   return (
     <div className="wrap">
       <h2>Create Course</h2>
-      <div className="validation--errors">
-        <h3>Validation Errors</h3>
-        <ul>
-          <li>Please provide a value for "Title"</li>
-          <li>Please provide a value for "Description"</li>
-        </ul>
-      </div>
+      {errors.length > 0 && (
+        <div className="validation--errors">
+          <h3>Validation Errors</h3>
+          <ul>
+            {errors.map((error, index) => (
+              <li key={index}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
         <div className="main--flex">
           <div>
@@ -78,7 +93,11 @@ const CreateCourse = () => {
               value={courseTitle}
               onChange={(e) => setCourseTitle(e.target.value)}
             />
-      {authenticatedUser && <p>By {authenticatedUser.firstName} {authenticatedUser.lastName}</p>}
+            {authenticatedUser && (
+              <p>
+                By {authenticatedUser.firstName} {authenticatedUser.lastName}
+              </p>
+            )}
             <label htmlFor="courseDescription">Course Description</label>
             <textarea
               id="courseDescription"
@@ -87,7 +106,7 @@ const CreateCourse = () => {
               onChange={(e) => setCourseDescription(e.target.value)}
             ></textarea>
           </div>
-        
+
           <div>
             <label htmlFor="estimatedTime">Estimated Time</label>
             <input
@@ -97,7 +116,7 @@ const CreateCourse = () => {
               value={estimatedTime}
               onChange={(e) => setEstimatedTime(e.target.value)}
             />
-           
+
             <label htmlFor="materialsNeeded">Materials Needed</label>
             <textarea
               id="materialsNeeded"
@@ -106,18 +125,17 @@ const CreateCourse = () => {
               onChange={(e) => setMaterialsNeeded(e.target.value)}
             ></textarea>
           </div>
-          </div>
-          <div>
-            <button className="button" type="submit">
-              Create Course
-            </button>
-            <button
-              className="button button-secondary"
-              onClick={handleCancelClick}
-            >
-              Cancel
-            </button>
-          
+        </div>
+        <div>
+          <button className="button" type="submit">
+            Create Course
+          </button>
+          <button
+            className="button button-secondary"
+            onClick={handleCancelClick}
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>
