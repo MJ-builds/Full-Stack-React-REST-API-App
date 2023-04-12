@@ -22,6 +22,8 @@ const UpdateCourse = () => {
   const [materialsNeeded, setMaterialsNeeded] = useState('');
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState([]);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+
 
   useEffect(() => {
     if (course) {
@@ -29,6 +31,7 @@ const UpdateCourse = () => {
       setCourseDescription(course.description);
       setEstimatedTime(course.estimatedTime || '');
       setMaterialsNeeded(course.materialsNeeded || '');
+      setShowUpdateForm(authenticatedUser && authenticatedUser.id === course.userId);
       setLoading(false);
     }
 },[course]);
@@ -45,7 +48,7 @@ if (loading) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (authenticatedUser && authenticatedUser.id === course.userId) {
+    if (showUpdateForm) {
       const { emailAddress, password } = authenticatedUser;
 
       try {
@@ -84,6 +87,8 @@ if (loading) {
 
   return (
     <div className="wrap">
+    {showUpdateForm ? (
+        <React.Fragment>
       <h2>Update Course</h2>
       {errors.length > 0 && (
         <div className="validation--errors">
@@ -151,6 +156,10 @@ if (loading) {
           </button>
         </div>
       </form>
+      </React.Fragment>
+      ) : (
+      navigate("/forbidden")
+      )}
     </div>
   );
 };
