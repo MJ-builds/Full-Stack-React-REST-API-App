@@ -52,13 +52,7 @@ const UserProvider = ({ children }) => {
     Cookies.remove("authenticatedUser");
   };
 
-  const value = {
-    authenticatedUser,
-    signIn,
-    signOut,
-  };
-
-  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{authenticatedUser, signIn, signOut}}>{children}</UserContext.Provider>;
 };
 
 export default UserProvider;
