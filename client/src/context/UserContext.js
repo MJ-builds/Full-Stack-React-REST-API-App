@@ -54,6 +54,7 @@ const UserProvider = ({ children }) => {
 
   const value = {
     authenticatedUser,
+    setAuthenticatedUser,
     signIn,
     signOut,
   };

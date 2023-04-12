@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
+import { useUserContext } from '../context/UserContext';
+
 const UserSignUp = () => {
   const navigate = useNavigate();  
 
@@ -10,6 +12,9 @@ const UserSignUp = () => {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
+  const { setAuthenticatedUser } = useUserContext();
+
 
   const handleCancelClick = (event) => {
     event.preventDefault();
@@ -54,6 +59,13 @@ const UserSignUp = () => {
         );
 
         if (response.status === 201) {
+          // set the authenticated user
+          setAuthenticatedUser({
+            firstName: firstName,
+            lastName: lastName,
+            emailAddress: emailAddress,
+          });
+          // redirect to the home page;
           navigate('/');
         } else {
           console.error("An error occurred while creating the course");
