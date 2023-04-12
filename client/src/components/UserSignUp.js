@@ -23,58 +23,41 @@ const UserSignUp = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    let errors = [];
-
-    if (!firstName) {
-      errors.push("Please provide a value for 'First Name'");
-    }
-
-    if (!lastName) {
-      errors.push("Please provide a value for 'Last Name'");
-    }
-
-    if (!emailAddress) {
-      errors.push("Please provide a value for 'Email Address'");
-    }
-
-    if (!lastName) {
-      errors.push("Please provide a value for 'Password'");
-    }
-
-    if (errors.length > 0) {
-      setErrors(errors);
-      return;
-    }
-
-      try {
-        const response = await axios.post(
-          "http://localhost:5000/api/users",
-          {
-            firstName: firstName,
-            lastName: lastName,
-            emailAddress: emailAddress,
-            password: password,
-          },
-        );
-
-        if (response.status === 201) {
-          // Call signIn function 
-          const signInSuccess = await signIn(emailAddress, password);
-    
-          if (signInSuccess) {
-            
-            navigate('/');
-          } else {
-            console.error("An error occurred while signing in the new user");
-          }
+  
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/users",
+        {
+          firstName: firstName,
+          lastName: lastName,
+          emailAddress: emailAddress,
+          password: password,
+        },
+      );
+  
+      if (response.status === 201) {
+        // Call signIn function
+        const signInSuccess = await signIn(emailAddress, password);
+  
+        if (signInSuccess) {
+          navigate('/');
         } else {
-          console.error("An error occurred while creating the course");
+          console.error("An error occurred while signing in the new user");
         }
-      } catch (error) {
+      } else {
+        console.error("An error occurred while creating the course");
+      }
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.errors) {
+        const apiErrors = error.response.data.errors;
+        setErrors(apiErrors);
+        console.log(error.response);
+      } else {
         console.error("An error occurred while creating the course", error);
       }
-    };
+    }
+  };
+  
 
   return (
     <div className="form--centered">
