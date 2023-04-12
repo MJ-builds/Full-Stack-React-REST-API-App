@@ -4,8 +4,9 @@ import { useUserContext } from '../context/UserContext';
 
 const PrivateRoute = () => {
   const { authenticatedUser } = useUserContext();
-
-  return authenticatedUser ? <Outlet /> : <Navigate to="/" />;
+/* TODO: Issue with New Course not going back after 
+redirect to forbidden. UpdateCourse works fine */
+  return authenticatedUser ? <Outlet /> : <Navigate to="/forbidden" />;
 };
 
 export default PrivateRoute;
