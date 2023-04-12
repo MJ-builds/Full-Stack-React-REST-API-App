@@ -51,7 +51,6 @@ const UserSignUp = () => {
       if (error.response && error.response.data && error.response.data.errors) {
         const apiErrors = error.response.data.errors;
         setErrors(apiErrors);
-        console.log(error.response);
       } else {
         console.error("An error occurred while creating the course", error);
       }
