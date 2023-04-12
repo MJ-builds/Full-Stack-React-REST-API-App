@@ -13,7 +13,7 @@ const UserSignUp = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const { setAuthenticatedUser } = useUserContext();
+  const { signIn } = useUserContext();
 
 
   const handleCancelClick = (event) => {
@@ -59,22 +59,22 @@ const UserSignUp = () => {
         );
 
         if (response.status === 201) {
-          // set the authenticated user
-          setAuthenticatedUser({
-            firstName: firstName,
-            lastName: lastName,
-            emailAddress: emailAddress,
-          });
-          // redirect to the home page;
-          navigate('/');
+          // Call signIn function 
+          const signInSuccess = await signIn(emailAddress, password);
+    
+          if (signInSuccess) {
+            
+            navigate('/');
+          } else {
+            console.error("An error occurred while signing in the new user");
+          }
         } else {
           console.error("An error occurred while creating the course");
         }
-      
       } catch (error) {
         console.error("An error occurred while creating the course", error);
       }
-  };
+    };
 
   return (
     <div className="form--centered">
