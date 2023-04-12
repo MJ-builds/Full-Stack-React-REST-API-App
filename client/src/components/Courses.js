@@ -24,7 +24,7 @@ const Courses = () => {
             <h3 className="course--title">{course.title}</h3>
             </NavLink>
         ))}
-        <a className="course--module course--add--module" href="/courses/create">
+        <NavLink className="course--module course--add--module" to="/courses/create">
           <span className="course--add--title">
             <svg
               version="1.1"
@@ -38,7 +38,7 @@ const Courses = () => {
             </svg>
             New Course
           </span>
-        </a>
+        </NavLink>
       </div>
     </main>
   );

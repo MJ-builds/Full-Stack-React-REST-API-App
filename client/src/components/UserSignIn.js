@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 
-//TODO: PLENTY - Shell only. From markup.
+
 const UserSignIn = () => {
-  //adding authenticatedUser for testing. Will remove later
+  
   const navigate = useNavigate();
-  const { signIn, authenticatedUser } = useUserContext();
+  const { signIn } = useUserContext();
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,7 +29,7 @@ const UserSignIn = () => {
     }
   };
 
-  //Just a simple placeholder while fleshing out the rest of the app
+
   const handleCancelClick = (event) => {
     event.preventDefault();
     navigate("/");
@@ -63,7 +63,7 @@ const UserSignIn = () => {
         </button>
       </form>
       <p>
-        Don't have a user account? Click here to <a href="/signup">sign up</a>!
+        Don't have a user account? Click here to <Link href="/signup">sign up</Link>!
       </p>
     </div>
   );

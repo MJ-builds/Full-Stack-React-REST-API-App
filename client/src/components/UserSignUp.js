@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigate, NavLink, Link } from 'react-router-dom';
+import {useNavigate, Link } from 'react-router-dom';
 
 const UserSignUp = () => {
   const navigate = useNavigate();  
