@@ -11,6 +11,7 @@ import CreateCourse from "./components/CreateCourse";
 import UpdateCourse from "./components/UpdateCourse";
 import UserSignOut from "./components/UserSignOut";
 import PrivateRoute from "./components/PrivateRoute";
+import Forbidden from "./components/Forbidden";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/courses/:courseId/update" element={<PrivateRoute />}>
           <Route index element={<UpdateCourse />} />
         </Route>
+        <Route path= '/forbidden' element= {<Forbidden/>}/>
       </Routes>
     </Router>
   );
