@@ -18,7 +18,7 @@ const CourseDetail = () => {
 
   const deleteCourse = async () => {
 
-  if (authenticatedUser) {
+  if (authenticatedUser && authenticatedUser.id === course.userId) {
     const { emailAddress, password } = authenticatedUser;
 
     try {
