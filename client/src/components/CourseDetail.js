@@ -59,13 +59,14 @@ const handleDeleteCourse = async () => {
     }
   }, [course]);
 
+  if (!course) {
+    return <p>Course not found</p>;
+  }
+
   if (loading) {
     return <p>Loading...</p>;
   }
 
-  if (!course) {
-    return <p>Course not found</p>;
-  }
 
   return (
     <React.Fragment>
