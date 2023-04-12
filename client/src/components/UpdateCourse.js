@@ -45,21 +45,6 @@ if (loading) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    let errors = [];
-
-    if (!courseTitle) {
-      errors.push("Please provide a value for 'Title'");
-    }
-
-    if (!courseDescription) {
-      errors.push("Please provide a value for 'Description'");
-    }
-
-    if (errors.length > 0) {
-      setErrors(errors);
-      return;
-    }
-
     if (authenticatedUser && authenticatedUser.id === course.userId) {
       const { emailAddress, password } = authenticatedUser;
 
@@ -84,15 +69,18 @@ if (loading) {
             refetchCourses();
             navigate(`/courses/${courseId}`);
         } else {
-          console.error("An error occurred while creating the course");
+          console.error("An error occurred while updating the course");
         }
       } catch (error) {
-        console.error("An error occurred while creating the course", error);
+        if (error.response && error.response.data && error.response.data.errors) {
+          const apiErrors = error.response.data.errors;
+          setErrors(apiErrors);
+        } else {
+          console.error("An error occurred while updating the course", error);
+        }
       }
-    } else {
-      console.error("User is not authenticated");
     }
-  };
+};
 
   return (
     <div className="wrap">
