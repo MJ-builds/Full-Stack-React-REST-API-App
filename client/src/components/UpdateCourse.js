@@ -158,7 +158,7 @@ if (loading) {
       </form>
       </React.Fragment>
       ) : (
-      navigate("/forbidden")
+        <p>You don't have permission to update this course.</p>
       )}
     </div>
   );
