@@ -60,7 +60,7 @@ if (loading) {
       return;
     }
 
-    if (authenticatedUser) {
+    if (authenticatedUser && authenticatedUser.id === course.userId) {
       const { emailAddress, password } = authenticatedUser;
 
       try {
