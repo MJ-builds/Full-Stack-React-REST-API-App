@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 
-
 const UserSignIn = () => {
   
   const navigate = useNavigate();
-  const { signIn } = useUserContext();
+  const { signIn, authenticatedUser } = useUserContext();
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
   
   const handleEmailChange = (event) => {
@@ -21,12 +21,23 @@ const UserSignIn = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    try {
+
     const isSignedIn = await signIn(emailAddress, password);
     if (isSignedIn) {
       navigate("/");
     } else {
-      console.log("Sign-in failed");
+      setErrors(["Sign-in was unsuccessful"]);
     }
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.errors) {
+      const apiErrors = error.response.data.errors;
+      setErrors(apiErrors);
+    } else {
+      console.error("Sign-in was unsuccessful", error);
+    }
+  }
   };
 
 
@@ -35,9 +46,21 @@ const UserSignIn = () => {
     navigate("/");
   };
 
+  if(!authenticatedUser) {
+
   return (
     <div className="form--centered">
       <h2>Sign In</h2>
+      {errors.length > 0 && (
+        <div className="validation--errors">
+          <h3>Error:</h3>
+          <ul>
+            {errors.map((error, index) => (
+              <li key={index}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
         <label htmlFor="emailAddress">Email Address</label>
         <input
@@ -67,6 +90,12 @@ const UserSignIn = () => {
       </p>
     </div>
   );
+
+} else {
+  return (
+    <p className = "wrap">You are already signed in...</p>
+  )
+}
 };
 
 export default UserSignIn;
