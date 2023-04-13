@@ -9,6 +9,8 @@ body {
     font-family: 'Work Sans', sans-serif;
     margin: 0;
     padding: 0;
+    /* modified background col */
+    background: #E6E5EA;
 }
 h2 {
     font-size: 1.5rem;
@@ -22,7 +24,7 @@ p {
     hyphens: auto;
 }
 a {
-    color: #939;
+    color: #38bdf8;
     text-decoration: none;
 }
 .wrap {
@@ -32,8 +34,9 @@ a {
 }
 
 header {
-    background: #57496e;
-    color: #fff;
+    /* modified background and col */
+    background: #15141b;
+    color: #E6E5EA;
     margin-bottom: 2rem;
     padding-bottom: 10px;
     
@@ -53,7 +56,8 @@ header li {
     font-size: .8rem;
 }
 header nav a {
-    color: #dbd;
+    /* modified */
+    color: #38bdf8;
 }
 header nav a:hover {
     color: #fff;
@@ -68,7 +72,7 @@ header nav a:hover {
     margin-left: .5rem;
 }
 .course--module {
-    background: #7c689b;
+    background: #23222a;
     border-radius: .5rem;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
@@ -87,7 +91,7 @@ header nav a:hover {
     margin-bottom: .25rem;
 }
 .course--title {
-    color: #fff;
+    color: #38bdf8;
     font-weight: 700;
     font-size: 1.25rem;
 }
@@ -108,7 +112,8 @@ header nav a:hover {
     border-bottom: 1px solid #888;
     margin: 3rem 0 .5rem;
     font-size: .9rem;
-    color: #555;
+    /* modified */
+    color: #15141b;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -117,7 +122,8 @@ header nav a:hover {
     margin-top: 0rem;
     margin-bottom: .5rem;
     font-weight: 700;
-    color: #47395e;
+    /* modified */
+    color: #38bdf8;
 }
 .course--detail--list {
     font-weight: 300;
@@ -126,7 +132,8 @@ header nav a:hover {
     list-style-position: inside;
 }
 .actions--bar {
-    background: #e9e5f0;
+    /* modified background col */
+    background: #35343b;
     padding: 1rem 0;
     margin: -2rem 0 2rem;
 }
@@ -181,8 +188,9 @@ textarea {
     min-height: 300px;
 }
 .button {
-    background: #7c689b;
-    color: #fff;
+    /* modified */
+    background: #38bdf8;
+    color: #35343b;
     font-size: 1rem;
     padding: .75rem 1.5rem;
     border: 0;
@@ -198,18 +206,22 @@ textarea {
     margin-bottom: 0;
 }
 .button:not(.button-secondary):hover {
-    background: #63537d;
+    /* modified */
+    background: #38bdf8;
+    color: #ffffff;
     cursor: pointer;
 }
 .button-secondary {
-    color: #7c689b;
+    /* modified */
+    color: #38bdf8;
     background: none;
-    box-shadow: 0 0 0 2px #7c689b inset;
+    box-shadow: 0 0 0 2px #38bdf8 inset;
     transition: box-shadow 0.2s, color 0.2s;
 }
 .button-secondary:hover {
-    color: #63537d;
-    box-shadow: 0 0 0 2px #63537d inset;
+    /* modified */
+    color: #ffffff;
+    box-shadow: 0 0 0 2px #38bdf8 inset;
     cursor: pointer;
 }
 input:focus, button:focus, .button:focus, textarea:focus {
