@@ -74,6 +74,12 @@ header nav a:hover {
     margin-bottom: 1.5rem;
     display: block;
 }
+
+.materials-list-container {
+    text-align: left;
+  }
+  
+
 .course--label {
     color: #fff;
     font-size: .9rem;
@@ -115,8 +121,9 @@ header nav a:hover {
 }
 .course--detail--list {
     font-weight: 300;
-    margin: 0 0 1.5rem -1rem;
+    margin: 0 0 1.5rem;
     line-height: 1.5;
+    list-style-position: inside;
 }
 .actions--bar {
     background: #e9e5f0;
