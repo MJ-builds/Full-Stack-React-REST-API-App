@@ -13,6 +13,7 @@ import UserSignOut from "./components/UserSignOut";
 import PrivateRoute from "./components/PrivateRoute";
 import Forbidden from "./components/Forbidden";
 import NotFound from "./components/NotFound";
+import UnhandledError from "./components/UnhandledError";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route index element={<UpdateCourse />} />
         </Route>
         <Route path= '/forbidden' element= {<Forbidden/>}/>
+        <Route path= '/error' element = {<UnhandledError/>} />
         <Route path= '*' element= {<NotFound />}/>
       </Routes>
     </Router>
