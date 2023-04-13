@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import apiClient from '../apiClient';
+import apiClient from "../apiClient";
 
 import { useUserContext } from "../context/UserContext";
 
@@ -52,73 +52,78 @@ const UserSignUp = () => {
     }
   };
 
-  if(!authenticatedUser) {
-
-  return (
-    <div className="form--centered">
-      <h2>Sign Up</h2>
-      {errors.length > 0 && (
-        <div className="validation--errors">
-          <h3>Validation Errors</h3>
-          <ul>
-            {errors.map((error, index) => (
-              <li key={index}>{error}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="firstName">First Name</label>
-        <input
-          id="firstName"
-          name="firstName"
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          id="lastName"
-          name="lastName"
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <label htmlFor="emailAddress">Email Address</label>
-        <input
-          id="emailAddress"
-          name="emailAddress"
-          type="email"
-          value={emailAddress}
-          onChange={(e) => setEmailAddress(e.target.value)}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button className="button" type="submit">
-          Sign Up
-        </button>
-        <button className="button button-secondary" onClick={handleCancelClick}>
-          Cancel
-        </button>
-      </form>
-      <p>
-        Already have a user account? Click here to{" "}
-        <Link to="/signin  ">sign in</Link>!
-      </p>
-    </div>
-  );
-
-} else {
-  return (
-    <p className = "wrap">Cannot sign-up: You are already signed in...</p>
-  )
-}
+  /* additional site logic to confirm that if the user is not signed in, 
+  render the form, else render the "Cannot sign-up: You are already signed in..." message.
+  May amend this to simply navigating the user back to the home page automatically instead */
+  if (!authenticatedUser) {
+    return (
+      <div className="form--centered">
+        <h2>Sign Up</h2>
+        {errors.length > 0 && (
+          <div className="validation--errors">
+            <h3>Validation Errors</h3>
+            <ul>
+              {errors.map((error, index) => (
+                <li key={index}>{error}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="firstName">First Name</label>
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <label htmlFor="lastName">Last Name</label>
+          <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+          <label htmlFor="emailAddress">Email Address</label>
+          <input
+            id="emailAddress"
+            name="emailAddress"
+            type="email"
+            value={emailAddress}
+            onChange={(e) => setEmailAddress(e.target.value)}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="button" type="submit">
+            Sign Up
+          </button>
+          <button
+            className="button button-secondary"
+            onClick={handleCancelClick}
+          >
+            Cancel
+          </button>
+        </form>
+        <p>
+          Already have a user account? Click here to{" "}
+          <Link to="/signin  ">sign in</Link>!
+        </p>
+      </div>
+    );
+  } else {
+    return (
+      // TODO: per above comment, may amend this to simply navigating the user back to the home page automatically instead
+      <p className="wrap">Cannot sign-up: You are already signed in...</p>
+    );
+  }
 };
 
 export default UserSignUp;
