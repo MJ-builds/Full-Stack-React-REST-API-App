@@ -51,6 +51,8 @@ header {
 .header--logo a {
     font-size: 1.25rem;
     color: #fff;
+    text-decoration: underline;
+    text-decoration-color: #38bdf8;
 }
 header li {
     font-size: .8rem;
@@ -72,76 +74,96 @@ header nav a:hover {
     margin-left: .5rem;
 }
 .course--module {
-    background: #23222a;
+    /* modified */
+    background: #38bdf8;
     border-radius: .5rem;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     display: block;
+    font-weight: 200;
 }
 
-.materials-list-container {
-    text-align: left;
-  }
-  
-
 .course--label {
-    color: #fff;
+    /* modified */
+    color: #E6E5EA;
     font-size: .9rem;
     font-weight: 400;
     margin-bottom: .25rem;
 }
 .course--title {
-    color: #38bdf8;
-    font-weight: 700;
+    color: #35343b;
+    font-weight: 300;
     font-size: 1.25rem;
 }
 .course--add--module {
-    background: #ddd9e4;
-    color: #57496e;
+    /* modified */
+    background: #38bff84f;
+    color: #ffffff;
     font-weight: 300;
     font-size: 1.25rem;
 }
 .course--add--title .add {
+    /* modified */
     width: 20px;
     height: auto;
     margin-right: 5px;
-    fill: #57496e;
+    fill: #ffffff;
 }
 .course--detail--title {
     padding-bottom: .25rem;
-    border-bottom: 1px solid #888;
+    border-bottom: 1px solid #15141b;
     margin: 3rem 0 .5rem;
     font-size: .9rem;
+    font-weight: 500;
     /* modified */
-    color: #15141b;
+    color: #817D92;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 .course--name {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-top: 0rem;
     margin-bottom: .5rem;
     font-weight: 700;
     /* modified */
     color: #38bdf8;
 }
+
 .course--detail--list {
     font-weight: 300;
     margin: 0 0 1.5rem;
     line-height: 1.5;
-    list-style-position: inside;
+    /* list-style-position: inside; */
 }
+
+.course--detail--markdown ul {
+    padding-left: 0;
+    margin-left: -0.5rem;
+    list-style-position: left;
+  }
+
+  .course--detail--markdown p {
+    padding-left: 0;
+    margin-left: -1.5rem;
+  }
+  
+  
+
+.materials-list-container {
+    text-align: left;
+  }
+
 .actions--bar {
     /* modified background col */
-    background: #35343b;
+    background: #38bdf8;
     padding: 1rem 0;
     margin: -2rem 0 2rem;
 }
 .validation--errors {
-    background: #e9e5f0;
+    background: #E6E5EA;
     padding: 1rem;
     border-radius: .5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.5rem;
 }
 .validation--errors h3 {
     color: #800;
@@ -149,6 +171,7 @@ header nav a:hover {
     margin-bottom: .5rem;
 }
 .validation--errors ul {
+    /* modified */
     font-weight: 300;
     margin-left: 1rem;
     line-height: 1.25;
@@ -174,23 +197,32 @@ label {
     margin-bottom: .25rem;
 }
 input, textarea {
+    /* modified */
     display: block;
     width: 100%;
-    color: #332a40;
-    border-radius: .5rem;
-    border: 1px solid #8c789b;
+    color: #35343b;
+    border-radius: 0.5rem;
+    border: 1px solid #38bdf8;
     padding: .5rem;
     margin-bottom: 1rem;
     font-family: 'Work Sans', sans-serif;
-    font-size: .8rem;
+    font-size: 0.9rem;
+    
 }
 textarea {
     min-height: 300px;
 }
+
+input:focus, button:focus, .button:focus, textarea:focus {
+    /* border: 1px solid #38bdf8; */
+    border-radius: 0.5rem;
+    outline: 1px solid #38bdf8;
+}
+
 .button {
     /* modified */
-    background: #38bdf8;
-    color: #35343b;
+    background: #24232C;
+    color: #38bdf8;;
     font-size: 1rem;
     padding: .75rem 1.5rem;
     border: 0;
@@ -200,34 +232,29 @@ textarea {
     text-align: center;
     border-radius: .5rem;
     font-weight: bold;
-    transition: background 0.2s;
+    transition: background 0.4s;
 }
 .button:last-child {
     margin-bottom: 0;
 }
 .button:not(.button-secondary):hover {
     /* modified */
-    background: #38bdf8;
+    background: #15141b;
     color: #ffffff;
     cursor: pointer;
 }
 .button-secondary {
     /* modified */
-    color: #38bdf8;
+    color: #24232C;
     background: none;
-    box-shadow: 0 0 0 2px #38bdf8 inset;
+    box-shadow: 0 0 0 2px #24232C inset;
     transition: box-shadow 0.2s, color 0.2s;
 }
 .button-secondary:hover {
     /* modified */
     color: #ffffff;
-    box-shadow: 0 0 0 2px #38bdf8 inset;
+    box-shadow: 0 0 0 2px #24232C inset;
     cursor: pointer;
-}
-input:focus, button:focus, .button:focus, textarea:focus {
-    border: none;
-    border-radius: 0;
-    outline: 2px solid #332a40;
 }
 
 @media screen and (min-width: 600px) {
