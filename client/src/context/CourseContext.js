@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext} from 'react';
-import axios from 'axios';
+import apiClient from '../apiClient';
 
 const CourseContext = createContext();
 
@@ -17,10 +17,10 @@ export const CourseProvider = ({ children }) => {
   const fetchCourses = async (courseId) => {
     try {
       if (courseId) {
-        const response = await axios.get(`http://localhost:5000/api/courses/${courseId}`);
+        const response = await apiClient.get(`/courses/${courseId}`);
         setCourses((prevCourses) => [...prevCourses, response.data]);
       } else {
-        const response = await axios.get('http://localhost:5000/api/courses');
+        const response = await apiClient.get('/courses');
         setCourses(response.data);
       }
     } catch (error) {

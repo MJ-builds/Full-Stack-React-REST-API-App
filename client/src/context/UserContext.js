@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
-import axios from "axios";
 import Cookies from "js-cookie";
+import apiClient from '../apiClient';
 
 const UserContext = createContext();
 
@@ -16,7 +16,7 @@ const UserProvider = ({ children }) => {
 
   const signIn = async (emailAddress, password) => {
     try {
-      const response = await axios.get("http://localhost:5000/api/users", {
+      const response = await apiClient.get("/users", {
         headers: {
           Authorization: `Basic ${btoa(`${emailAddress}:${password}`)}`,
         },
