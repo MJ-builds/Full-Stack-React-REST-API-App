@@ -12,7 +12,7 @@ const UserSignUp = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const { signIn } = useUserContext();
+  const { signIn, authenticatedUser } = useUserContext();
 
   const handleCancelClick = (event) => {
     event.preventDefault();
@@ -52,6 +52,7 @@ const UserSignUp = () => {
     }
   };
 
+  if(!authenticatedUser) {
 
   return (
     <div className="form--centered">
@@ -112,6 +113,12 @@ const UserSignUp = () => {
       </p>
     </div>
   );
+
+} else {
+  return (
+    <p className = "wrap">Cannot sign-up: You are already signed in...</p>
+  )
+}
 };
 
 export default UserSignUp;
