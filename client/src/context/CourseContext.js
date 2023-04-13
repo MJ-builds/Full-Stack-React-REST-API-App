@@ -1,11 +1,11 @@
-import { createContext, useState, useEffect, useContext} from 'react';
-import apiClient from '../apiClient';
+import { createContext, useState, useEffect, useContext } from "react";
+import apiClient from "../apiClient";
 
 const CourseContext = createContext();
 
 export const useCourseContext = () => {
-    return useContext(CourseContext);
-  };
+  return useContext(CourseContext);
+};
 
 export const CourseProvider = ({ children }) => {
   const [courses, setCourses] = useState([]);
@@ -13,21 +13,24 @@ export const CourseProvider = ({ children }) => {
 
   /* Fetch courses from API - ok for now but may need to adjust later
    when additional components added. Just wanted simple logic 
-   working for now */
+   working for now - 
+   Update: changed course a little as the app unfolded. Will adjust in future */
   const fetchCourses = async (courseId) => {
     try {
       if (courseId) {
         const response = await apiClient.get(`/courses/${courseId}`);
         setCourses((prevCourses) => [...prevCourses, response.data]);
       } else {
-        const response = await apiClient.get('/courses');
+        const response = await apiClient.get("/courses");
         setCourses(response.data);
       }
     } catch (error) {
-      console.error('Error fetching courses:', error);
+      console.error("Error fetching courses:", error);
     }
   };
 
+  /* had an issue with the useEffect hook not updating the courses state, 
+  so I created this function to refetch the courses */
   const refetchCourses = () => {
     setLoading(true);
     fetchCourses();
@@ -36,12 +39,12 @@ export const CourseProvider = ({ children }) => {
   useEffect(() => {
     fetchCourses();
   }, []);
-  
 
   return (
-    <CourseContext.Provider value={{ courses, setCourses, fetchCourses, loading, refetchCourses }}>
+    <CourseContext.Provider
+      value={{ courses, setCourses, fetchCourses, loading, refetchCourses }}
+    >
       {children}
     </CourseContext.Provider>
   );
 };
-
