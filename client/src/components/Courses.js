@@ -1,20 +1,22 @@
-import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { useCourseContext } from "../context/CourseContext";
 
 const Courses = () => {
   const { courses, fetchCourses } = useCourseContext();
 
+  /* Fetch courses when component mounts and when courses array changes, 
+  using the fetchCourses function from the context. */
   useEffect(() => {
-    if(courses.length === 0) {
-        fetchCourses();
+    if (courses.length === 0) {
+      fetchCourses();
     }
   }, [courses, fetchCourses]);
 
   return (
     <main>
       <div className="wrap main--grid">
-        {courses.map(course => (
+        {courses.map((course) => (
           <NavLink
             key={course.id}
             className="course--module course--link"
@@ -22,9 +24,12 @@ const Courses = () => {
           >
             <h2 className="course--label">Course</h2>
             <h3 className="course--title">{course.title}</h3>
-            </NavLink>
+          </NavLink>
         ))}
-        <NavLink className="course--module course--add--module" to="/courses/create">
+        <NavLink
+          className="course--module course--add--module"
+          to="/courses/create"
+        >
           <span className="course--add--title">
             <svg
               version="1.1"
