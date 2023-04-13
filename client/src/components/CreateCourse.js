@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import apiClient from '../apiClient';
+import apiClient from "../apiClient";
 
 import { useCourseContext } from "../context/CourseContext";
 import { useUserContext } from "../context/UserContext";
@@ -23,6 +23,7 @@ const CreateCourse = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // if a user is authenticated, then attempt to create (POST) a new course, assuming no validation issues below
     if (authenticatedUser) {
       const { emailAddress, password, id: userId } = authenticatedUser;
 
@@ -44,21 +45,26 @@ const CreateCourse = () => {
         );
 
         if (response.status === 201) {
-            refetchCourses();
-          navigate('/');
+          refetchCourses();
+          navigate("/");
         } else {
           console.error("An error occurred while creating the course");
         }
+        //for validation errors - if there are any, setErrors to the array of errors from the API
       } catch (error) {
-        if (error.response && error.response.data && error.response.data.errors) {
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.errors
+        ) {
           const apiErrors = error.response.data.errors;
           setErrors(apiErrors);
         } else {
           console.error("User is not authenticated", error);
         }
       }
-    };
-}
+    }
+  };
 
   return (
     <div className="wrap">
@@ -67,6 +73,7 @@ const CreateCourse = () => {
         <div className="validation--errors">
           <h3>Validation Errors</h3>
           <ul>
+            {/* map out errors in array, if any */}
             {errors.map((error, index) => (
               <li key={index}>{error}</li>
             ))}
