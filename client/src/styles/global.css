@@ -226,7 +226,9 @@ input:focus, button:focus, .button:focus, textarea:focus {
 
 .button {
     /* modified */
-    background: #24232C;
+    background: #15141b;
+    
+    /* #24232C */
     color: #38bdf8;;
     font-size: 1rem;
     padding: .75rem 1.5rem;
@@ -244,7 +246,7 @@ input:focus, button:focus, .button:focus, textarea:focus {
 }
 .button:not(.button-secondary):hover {
     /* modified */
-    background: #15141b;
+    background: #24232C;
     color: #ffffff;
     cursor: pointer;
 }
