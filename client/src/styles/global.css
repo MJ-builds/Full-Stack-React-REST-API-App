@@ -53,6 +53,7 @@ header {
     color: #fff;
     text-decoration: underline;
     text-decoration-color: #38bdf8;
+    text-decoration-thickness: 3px;
 }
 header li {
     font-size: .8rem;
@@ -73,6 +74,12 @@ header nav a:hover {
     display: inline-block;
     margin-left: .5rem;
 }
+
+.logged--in--user {
+    font-weight: 600;
+    display: inline-block;
+}
+
 .course--module {
     /* modified */
     background: #38bdf8;
