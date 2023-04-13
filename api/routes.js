@@ -61,6 +61,8 @@ router.post(
 router.get(
   "/courses",
   asyncHandler(async (req, res) => {
+    // for testing purposes - to remove
+    // return res.status(500).send('Internal Server Error');
     const courses = await Course.findAll({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
