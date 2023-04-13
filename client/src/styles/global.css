@@ -7,6 +7,8 @@ html {
 }
 body {
     font-family: 'Work Sans', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 h2 {
     font-size: 1.5rem;
@@ -28,16 +30,20 @@ a {
     margin: 0 auto;
     padding: 0 1rem;
 }
+
 header {
     background: #57496e;
     color: #fff;
-    padding: 1rem 0;
     margin-bottom: 2rem;
+    padding-bottom: 10px;
+    
 }
 .header--flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 70px;
+    
 }
 .header--logo a {
     font-size: 1.25rem;
