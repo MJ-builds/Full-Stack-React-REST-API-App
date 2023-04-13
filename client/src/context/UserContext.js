@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import Cookies from "js-cookie";
-import apiClient from '../apiClient';
+import apiClient from "../apiClient";
 
 const UserContext = createContext();
 
@@ -10,10 +10,13 @@ export const useUserContext = () => {
 
 const UserProvider = ({ children }) => {
   const [authenticatedUser, setAuthenticatedUser] = useState(() => {
+    //using JS Cookie to store the authenticated user in a cookie
     const storedUser = Cookies.get("authenticatedUser");
     return storedUser ? JSON.parse(storedUser) : null;
   });
 
+  /* sign in function - if the user is authenticated, set the authenticated user 
+  in state and in a cookie for persistence. Accompanying auth header is also set. */
   const signIn = async (emailAddress, password) => {
     try {
       const response = await apiClient.get("/users", {
@@ -32,8 +35,9 @@ const UserProvider = ({ children }) => {
         Cookies.set(
           "authenticatedUser",
           JSON.stringify(authenticatedUserData),
+          // cookie expires in 1 day following creation
           { expires: 1 }
-        ); // Set the cookie to expire in 1 day
+        );
         return true;
       } else {
         setAuthenticatedUser(null);
@@ -47,12 +51,17 @@ const UserProvider = ({ children }) => {
     }
   };
 
+  // sign out function - removes the authenticated user from state and the cookie
   const signOut = () => {
     setAuthenticatedUser(null);
     Cookies.remove("authenticatedUser");
   };
 
-  return <UserContext.Provider value={{authenticatedUser, signIn, signOut}}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ authenticatedUser, signIn, signOut }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
 export default UserProvider;
