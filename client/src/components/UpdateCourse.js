@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
-import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import apiClient from '../apiClient';
 
 import { useUserContext } from "../context/UserContext";
 import { useCourseContext } from "../context/CourseContext";
@@ -52,8 +52,8 @@ if (loading) {
       const { emailAddress, password } = authenticatedUser;
 
       try {
-        const response = await axios.put(
-          `http://localhost:5000/api/courses/${courseId}`,
+        const response = await apiClient.put(
+          `/courses/${courseId}`,
           {
             // userId,
             title: courseTitle,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import apiClient from '../apiClient';
 
 import { useUserContext } from "../context/UserContext";
 
@@ -23,7 +23,7 @@ const UserSignUp = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/api/users", {
+      const response = await apiClient.post("/users", {
         firstName: firstName,
         lastName: lastName,
         emailAddress: emailAddress,

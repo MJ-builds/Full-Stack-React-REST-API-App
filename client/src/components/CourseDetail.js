@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, NavLink, useNavigate } from "react-router-dom";
 import { useCourseContext } from "../context/CourseContext";
 import { useUserContext } from "../context/UserContext";
-import axios from "axios";
 import ReactMarkdown from 'react-markdown'
+import apiClient from '../apiClient';
 
 import NotFound from "./NotFound";
 
@@ -25,8 +25,8 @@ const CourseDetail = () => {
     const { emailAddress, password } = authenticatedUser;
 
     try {
-      const response = await axios.delete(
-        `http://localhost:5000/api/courses/${courseId}`,
+      const response = await apiClient.delete(
+        `/courses/${courseId}`,
         {
           headers: {
             Authorization: `Basic ${btoa(`${emailAddress}:${password}`)}`,

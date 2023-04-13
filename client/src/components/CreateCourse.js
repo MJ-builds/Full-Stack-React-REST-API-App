@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import apiClient from '../apiClient';
 
 import { useCourseContext } from "../context/CourseContext";
 import { useUserContext } from "../context/UserContext";
@@ -27,8 +27,8 @@ const CreateCourse = () => {
       const { emailAddress, password, id: userId } = authenticatedUser;
 
       try {
-        const response = await axios.post(
-          "http://localhost:5000/api/courses",
+        const response = await apiClient.post(
+          "/courses",
           {
             userId,
             title: courseTitle,
