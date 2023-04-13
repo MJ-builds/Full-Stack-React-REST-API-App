@@ -20,17 +20,22 @@ function App() {
     <Router>
       <Header />
       <Routes>
+        {/* Public Routes: */}
         <Route path="/" element={<Courses />} />
         <Route path="/courses/:courseId" element={<CourseDetail />} />
         <Route path="/signin" element={<UserSignIn />} />
         <Route path="/signup" element={<UserSignUp />} />
         <Route path="/signout" element={<UserSignOut />} />
+
+        {/* PrivateRoutes for CreateCourse and UpdateCourse: */}
         <Route path="/courses/create" element={<PrivateRoute />}>
           <Route index element={<CreateCourse />} />
         </Route>
         <Route path="/courses/:courseId/update" element={<PrivateRoute />}>
           <Route index element={<UpdateCourse />} />
         </Route>
+
+        {/* Error Routes: */}
         <Route path= '/forbidden' element= {<Forbidden/>}/>
         <Route path= '/error' element = {<UnhandledError/>} />
         <Route path= '*' element= {<NotFound />}/>

@@ -4,8 +4,9 @@ import { useUserContext } from '../context/UserContext';
 
 const PrivateRoute = () => {
   const { authenticatedUser } = useUserContext();
-/* TODO: Issue with New Course not going back after 
-redirect to forbidden. UpdateCourse works fine */
+
+  /* If the user is authenticated, render the component that was passed in Route 
+  within PrivateRoute(see App.js). If not, redirect to the sign in page. */
   return authenticatedUser ? <Outlet /> : <Navigate to="/signin" />;
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 
+//if a route isn't matched the 'NotFound' component will be rendered.
 const NotFound = () => {
   return (
     <div className="wrap">

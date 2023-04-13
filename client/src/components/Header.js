@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
 import { useUserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
 
 
-//TODO: PLENTY - Shell only. From markup.
+/* Header component that displays the header of the app, and depending on whether a user 
+is signed in or not, displays the appropriate navigation links 
+(First Name Last Name / Sign Out or sign In / Sign Out). */
 const Header = () => {
 
   const { authenticatedUser, signOut } = useUserContext();
