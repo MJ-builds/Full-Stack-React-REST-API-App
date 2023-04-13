@@ -5,6 +5,9 @@ import apiClient from '../apiClient';
 import { useUserContext } from "../context/UserContext";
 import { useCourseContext } from "../context/CourseContext";
 
+import NotFound from "./NotFound";
+import Forbidden from "./Forbidden";
+
 const UpdateCourse = () => {
   const navigate = useNavigate();
   const { courseId } = useParams();
@@ -31,13 +34,17 @@ const UpdateCourse = () => {
       setCourseDescription(course.description);
       setEstimatedTime(course.estimatedTime || '');
       setMaterialsNeeded(course.materialsNeeded || '');
-      setShowUpdateForm(authenticatedUser && authenticatedUser.id === course.userId);
-      setLoading(false);
+      setShowUpdateForm(authenticatedUser && authenticatedUser.id === course.userId);   
     }
+    setLoading(false);
 },[course]);
 
 if (loading) {
     return <p>Loading...</p>;
+  }
+
+  if (!course) {
+    return <NotFound />;
   }
 
   const handleCancelClick = (event) => {
@@ -158,7 +165,7 @@ if (loading) {
       </form>
       </React.Fragment>
       ) : (
-        <p>You don't have permission to update this course.</p>
+        <Forbidden />
       )}
     </div>
   );

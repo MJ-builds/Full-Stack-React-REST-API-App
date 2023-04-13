@@ -167,10 +167,10 @@ header nav a:hover {
     margin: -2rem 0 2rem;
 }
 .validation--errors {
-    background: #E6E5EA;
+    background: #817d9255;
     padding: 1rem;
     border-radius: .5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 .validation--errors h3 {
     color: #800;
