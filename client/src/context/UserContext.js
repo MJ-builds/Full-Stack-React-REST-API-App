@@ -25,6 +25,7 @@ const UserProvider = ({ children }) => {
         },
       });
 
+      // retrieve the user data from the response
       if (response.status === 200) {
         const authenticatedUserData = {
           ...response.data,
