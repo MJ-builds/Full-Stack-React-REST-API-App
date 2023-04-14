@@ -88,7 +88,8 @@ header nav a:hover {
     margin-bottom: 1.5rem;
     display: block;
     font-weight: 200;
-}
+    box-shadow: 2px 2px 5px #15141b6f
+  }
 
 .course--label {
     /* modified */
