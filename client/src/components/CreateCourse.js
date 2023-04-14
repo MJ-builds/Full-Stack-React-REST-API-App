@@ -87,7 +87,7 @@ const CreateCourse = () => {
       <form onSubmit={handleSubmit}>
         <div className="main--flex">
           <div>
-            <label htmlFor="courseTitle">Course Title</label>
+            <label className = "course--title-create--update" htmlFor="courseTitle">Course Title</label>
             <input
               id="courseTitle"
               name="courseTitle"
@@ -98,14 +98,11 @@ const CreateCourse = () => {
             {authenticatedUser && (
               <>
                 <p>
-                  By{" "}
-                  <span className="created-by">
-                    {authenticatedUser.firstName} {authenticatedUser.lastName}
-                  </span>
+                <span className="course-author">By {authenticatedUser.firstName} {authenticatedUser.lastName}</span>
                 </p>
               </>
             )}
-            <label htmlFor="courseDescription">Course Description</label>
+            <label className = "course--title-create--update" htmlFor="courseDescription">Course Description</label>
             <textarea
               id="courseDescription"
               name="courseDescription"
@@ -115,7 +112,7 @@ const CreateCourse = () => {
           </div>
 
           <div>
-            <label htmlFor="estimatedTime">Estimated Time</label>
+            <label className = "course--title-create--update" htmlFor="estimatedTime">Estimated Time</label>
             <input
               id="estimatedTime"
               name="estimatedTime"
@@ -124,7 +121,7 @@ const CreateCourse = () => {
               onChange={(e) => setEstimatedTime(e.target.value)}
             />
 
-            <label htmlFor="materialsNeeded">Materials Needed</label>
+            <label className = "course--title-create--update" htmlFor="materialsNeeded">Materials Needed</label>
             <textarea
               id="materialsNeeded"
               name="materialsNeeded"

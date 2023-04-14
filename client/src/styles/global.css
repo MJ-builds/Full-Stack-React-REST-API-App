@@ -6,7 +6,7 @@ html {
     font-size: 1.25em;
 }
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Work Sans', sans-serif;
     margin: 0;
     padding: 0;
     /* modified background col */
@@ -88,7 +88,7 @@ header nav a:hover {
     margin-bottom: 1.5rem;
     display: block;
     font-weight: 200;
-    box-shadow: 2px 2px 5px #15141b6f
+    /* box-shadow: 2px 2px 5px #15141b6f */
   }
 
 .course--label {
@@ -100,7 +100,7 @@ header nav a:hover {
 }
 .course--title {
     color: #ffffff;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1.25rem;
 }
 .course--add--module {
@@ -124,9 +124,21 @@ header nav a:hover {
     font-size: .9rem;
     font-weight: 500;
     /* modified */
-    color: #817D92;
+    color: #24232C;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+.course--title-create--update {
+    /* added*/
+    margin-top: 1rem;
+    font-size: .9rem;
+    font-weight: 500;  
+    color: #24232C;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.course-author {
+    font-size: large;
 }
 .course--name {
     font-size: 1.8rem;
@@ -218,7 +230,7 @@ input, textarea {
     width: 100%;
     color: #35343b;
     border-radius: 0.5rem;
-    border: 1px solid #38bdf8;
+    border: 2px solid #38bdf8;
     padding: .5rem;
     margin-bottom: 1rem;
     font-family: 'Work Sans', sans-serif;
@@ -237,13 +249,11 @@ input:focus, button:focus, .button:focus, textarea:focus {
 
 .button {
     /* modified */
-    background: #15141b;
-    
-    /* #24232C */
+    background: #38bdf8;
     color: #ffffff;
     font-size: 1rem;
     padding: .75rem 1.5rem;
-    border: 0;
+    border: 2px solid #15066e;
     margin: 0 0 .5rem 0;
     display: block;
     width: 210px;
@@ -257,21 +267,22 @@ input:focus, button:focus, .button:focus, textarea:focus {
 }
 .button:not(.button-secondary):hover {
     /* modified */
-    background: #24232C;
-    color: #38bdf8;
+    background: #38bdf8;
+    color: #ffffff;
+    box-shadow: 0 0 0 1px #24232C inset;
     cursor: pointer;
 }
 .button-secondary {
     /* modified */
     color: #24232C;
     background: none;
-    box-shadow: 0 0 0 2px #24232C inset;
+    /* box-shadow: 0 0 0 2px #24232C inset; */
     transition: box-shadow 0.2s, color 0.2s;
 }
 .button-secondary:hover {
     /* modified */
     color: #24232C;
-    box-shadow: 0 0 0 2px #24232C inset;
+    box-shadow: 0 0 0 1px #24232C inset;
     cursor: pointer;
 }
 
