@@ -12,7 +12,7 @@ const Courses = () => {
   TODO: refactor */
   useEffect(() => {
     if (courses.length === 0) {
-      async function fetchDataAndNavigateOnError() {
+      async function fetchData() {
         try {
           await fetchCourses();
         } catch (error) {
@@ -23,7 +23,7 @@ const Courses = () => {
         }
       }
   
-      fetchDataAndNavigateOnError();
+      fetchData();
     }
   }, [courses, fetchCourses, navigate]);
   
