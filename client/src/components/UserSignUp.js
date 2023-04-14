@@ -60,6 +60,7 @@ const UserSignUp = () => {
     }
   };
 
+  
   /* additional site logic to confirm that if the user is not signed in, 
   render the form, else render the "Cannot sign-up: You are already signed in..." message.
   May amend this to simply navigating the user back to the home page automatically instead */
