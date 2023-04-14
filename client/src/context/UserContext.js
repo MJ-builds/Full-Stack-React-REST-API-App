@@ -41,12 +41,15 @@ const UserProvider = ({ children }) => {
         return true;
       } else {
         setAuthenticatedUser(null);
+        return false;
       }
     } catch (error) {
       if (error.response.status === 401) {
         console.error("Invalid user credentials");
+        return false;
       } else {
         console.error("An error occurred while signing in");
+        return error.response;
       }
     }
   };

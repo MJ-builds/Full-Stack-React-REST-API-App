@@ -23,13 +23,13 @@ const UserSignIn = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
-      /* Call signIn function from context and pass in email and password from form below - 
-    if successful, navigate to home page */
-      const isSignedIn = await signIn(emailAddress, password);
-      if (isSignedIn) {
+      const signInResult = await signIn(emailAddress, password);
+      if (signInResult === true) {
         navigate(from);
+      } else if (signInResult.status === 500) {
+        navigate("/error");
       } else {
         setErrors(["Sign-in was unsuccessful"]);
       }
@@ -42,6 +42,7 @@ const UserSignIn = () => {
       }
     }
   };
+  
 
   const handleCancelClick = (event) => {
     event.preventDefault();
