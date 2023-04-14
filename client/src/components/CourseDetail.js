@@ -75,7 +75,7 @@ also, for now we are using window.confirm to confirm the deletion of the course
   }
 
   return (
-    <React.Fragment>
+    <>
       <div className="actions--bar">
         <div className="wrap">
           {/* Update and Delete button only appear on condition that the user is authenticated, 
@@ -103,7 +103,7 @@ also, for now we are using window.confirm to confirm the deletion of the course
               <h3 className="course--detail--title">Course</h3>
               <h4 className="course--name">{course.title}</h4>
               <p>
-                By {course.user.firstName} {course.user.lastName}
+                By <span className="created-by">{course.user.firstName} {course.user.lastName}</span>
               </p>
               <ReactMarkdown>{course.description}</ReactMarkdown>
             </div>
@@ -118,7 +118,7 @@ also, for now we are using window.confirm to confirm the deletion of the course
           </div>
         </form>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

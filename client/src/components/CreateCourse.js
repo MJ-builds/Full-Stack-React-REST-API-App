@@ -54,9 +54,8 @@ const CreateCourse = () => {
       } catch (error) {
         if (error.response && error.response.status === 500) {
           navigate("/error");
-          
         }
-        // for validation errors - if there are any, setErrors to the array of errors from the API 
+        // for validation errors - if there are any, setErrors to the array of errors from the API
         else if (
           error.response &&
           error.response.data &&
@@ -97,9 +96,14 @@ const CreateCourse = () => {
               onChange={(e) => setCourseTitle(e.target.value)}
             />
             {authenticatedUser && (
-              <p>
-                By {authenticatedUser.firstName} {authenticatedUser.lastName}
-              </p>
+              <>
+                <p>
+                  By{" "}
+                  <span className="created-by">
+                    {authenticatedUser.firstName} {authenticatedUser.lastName}
+                  </span>
+                </p>
+              </>
             )}
             <label htmlFor="courseDescription">Course Description</label>
             <textarea

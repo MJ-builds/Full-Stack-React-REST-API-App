@@ -159,6 +159,11 @@ header nav a:hover {
     text-align: left;
   }
 
+.created-by {
+    font-style: italic;
+    font-weight: 600;
+}
+
 .actions--bar {
     /* modified background col */
     background: #38bdf8;
@@ -235,7 +240,7 @@ input:focus, button:focus, .button:focus, textarea:focus {
     background: #15141b;
     
     /* #24232C */
-    color: #38bdf8;;
+    color: #38bdf8;
     font-size: 1rem;
     padding: .75rem 1.5rem;
     border: 0;

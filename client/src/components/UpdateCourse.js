@@ -109,7 +109,7 @@ const UpdateCourse = () => {
       {/* if  authenticatedUser && authenticatedUser.id === course.userId, 
     then show the form and the user can edit - otherwise, render <Forbidden /> component */}
       {showUpdateForm ? (
-        <React.Fragment>
+        <>
           <h2>Update Course</h2>
           {errors.length > 0 && (
             <div className="validation--errors">
@@ -135,7 +135,7 @@ const UpdateCourse = () => {
                 />
                 {authenticatedUser && (
                   <p>
-                    By {course.user.firstName} {course.user.lastName}
+                    By <span className= "created-by">{course.user.firstName} {course.user.lastName}</span>
                   </p>
                 )}
                 <label htmlFor="courseDescription">Course Description</label>
@@ -178,7 +178,7 @@ const UpdateCourse = () => {
               </button>
             </div>
           </form>
-        </React.Fragment>
+        </>
       ) : (
         <Forbidden />
       )}
