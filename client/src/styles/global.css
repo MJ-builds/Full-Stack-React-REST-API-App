@@ -6,7 +6,7 @@ html {
     font-size: 1.25em;
 }
 body {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     /* modified background col */
@@ -100,7 +100,7 @@ header nav a:hover {
 }
 .course--title {
     color: #ffffff;
-    font-weight: 500;
+    font-weight: 300;
     font-size: 1.25rem;
 }
 .course--add--module {
