@@ -84,9 +84,13 @@ const UpdateCourse = () => {
         } else {
           console.error("An error occurred while updating the course");
         }
-        //for validation errors - if there are any, setErrors to the array of errors from the API
+        // for server errors - if there is a 500 error, navigate to the error page
       } catch (error) {
-        if (
+        if (error.response && error.response.status === 500) {
+          navigate("/error");
+        } 
+        //for validation errors - if there are any, setErrors to the array of errors from the API
+        else if (
           error.response &&
           error.response.data &&
           error.response.data.errors

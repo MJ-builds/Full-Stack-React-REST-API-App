@@ -1,17 +1,32 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useCourseContext } from "../context/CourseContext";
 
 const Courses = () => {
   const { courses, fetchCourses } = useCourseContext();
-
+  const navigate = useNavigate();
   /* Fetch courses when component mounts and when courses array changes, 
-  using the fetchCourses function from the context. */
+  using the fetchCourses function from the context.
+  Addded: Had to modify fetchCourses to take in errors to 
+  allow 500 to be flagged here - bit of a scuff job but works for now...
+  TODO: refactor */
   useEffect(() => {
     if (courses.length === 0) {
-      fetchCourses();
+      async function fetchDataAndNavigateOnError() {
+        try {
+          await fetchCourses();
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          if (error.response && error.response.status === 500) {
+            navigate('/error');
+          }
+        }
+      }
+  
+      fetchDataAndNavigateOnError();
     }
-  }, [courses, fetchCourses]);
+  }, [courses, fetchCourses, navigate]);
+  
 
   return (
     <main>

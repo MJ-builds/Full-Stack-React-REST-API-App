@@ -15,19 +15,27 @@ export const CourseProvider = ({ children }) => {
    when additional components added. Just wanted simple logic 
    working for now - 
    Update: changed course a little as the app unfolded. Will adjust in future */
-  const fetchCourses = async (courseId) => {
+   const fetchCourses = async (courseId) => {
     try {
       if (courseId) {
         const response = await apiClient.get(`/courses/${courseId}`);
+        if (response.status === 500) {
+          throw new Error("Server error");
+        }
         setCourses((prevCourses) => [...prevCourses, response.data]);
       } else {
         const response = await apiClient.get("/courses");
+        if (response.status === 500) {
+          throw new Error("Server error");
+        }
         setCourses(response.data);
       }
     } catch (error) {
       console.error("Error fetching courses:", error);
+      throw error;
     }
   };
+  
 
   /* had an issue with the useEffect hook not updating the courses state, 
   so I created this function to refetch the courses */

@@ -33,16 +33,16 @@ const CourseDetail = () => {
 
         if (response.status === 204) {
           navigate("/");
-        } else {
-          console.error(
-            "An error occurred while attempting to delete the course"
-          );
         }
       } catch (error) {
-        console.error(
-          "An error occurred while attempting to delete the course",
-          error
-        );
+        if (error.response && error.response.status === 500) {
+          navigate("/error");
+        } else {
+          console.error(
+            "An error occurred while attempting to delete the course",
+            error
+          );
+        }
       }
     } else {
       console.error("User is not authenticated");
