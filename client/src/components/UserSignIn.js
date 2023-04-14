@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 
 const UserSignIn = () => {
   const navigate = useNavigate();
+  //for redirect to previous page after sign in
+  const location = useLocation();
+  const from = location.state?.from || "/";
+
   const { signIn, authenticatedUser } = useUserContext();
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +29,7 @@ const UserSignIn = () => {
     if successful, navigate to home page */
       const isSignedIn = await signIn(emailAddress, password);
       if (isSignedIn) {
-        navigate("/");
+        navigate(from);
       } else {
         setErrors(["Sign-in was unsuccessful"]);
       }
