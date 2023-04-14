@@ -270,7 +270,7 @@ input:focus, button:focus, .button:focus, textarea:focus {
 }
 .button-secondary:hover {
     /* modified */
-    color: #38bdf8;
+    color: #24232C;
     box-shadow: 0 0 0 2px #24232C inset;
     cursor: pointer;
 }
