@@ -4,7 +4,7 @@ import React from "react";
 redirect users to the /forbidden path */
 const Forbidden = () => {
   return (
-    <div className="wrap">
+    <div className="forbidden wrap">
       <h2>Forbidden</h2>
       <p>Oh oh! You can't access this page.</p>
     </div>
