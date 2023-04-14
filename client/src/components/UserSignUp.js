@@ -42,8 +42,16 @@ const UserSignUp = () => {
       } else {
         console.error("An error occurred while creating the course");
       }
+      // for server errors - if there is a 500 error, navigate to the error page
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.errors) {
+      if (error.response && error.response.status === 500) {
+        navigate("/error");
+        // for validation errors - if there are any, setErrors to the array of errors from the API
+      } else if (
+        error.response &&
+        error.response.data &&
+        error.response.data.errors
+      ) {
         const apiErrors = error.response.data.errors;
         setErrors(apiErrors);
       } else {
