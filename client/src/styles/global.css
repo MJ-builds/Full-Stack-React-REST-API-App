@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     /* modified background col */
-    background: #E6E5EA;
+    background: #ffffff;
 }
 h2 {
     font-size: 1.5rem;
@@ -106,7 +106,7 @@ header nav a:hover {
 .course--add--module {
     /* modified */
     background: #38bff84f;
-    color: #ffffff;
+    color: #15141b8d;
     font-weight: 300;
     font-size: 1.25rem;
 }
@@ -115,7 +115,7 @@ header nav a:hover {
     width: 20px;
     height: auto;
     margin-right: 5px;
-    fill: #ffffff;
+    fill: #15141b8d;
 }
 .course--detail--title {
     padding-bottom: .25rem;
@@ -240,7 +240,7 @@ input:focus, button:focus, .button:focus, textarea:focus {
     background: #15141b;
     
     /* #24232C */
-    color: #38bdf8;
+    color: #ffffff;
     font-size: 1rem;
     padding: .75rem 1.5rem;
     border: 0;
@@ -258,7 +258,7 @@ input:focus, button:focus, .button:focus, textarea:focus {
 .button:not(.button-secondary):hover {
     /* modified */
     background: #24232C;
-    color: #ffffff;
+    color: #38bdf8;
     cursor: pointer;
 }
 .button-secondary {
@@ -270,7 +270,7 @@ input:focus, button:focus, .button:focus, textarea:focus {
 }
 .button-secondary:hover {
     /* modified */
-    color: #ffffff;
+    color: #38bdf8;
     box-shadow: 0 0 0 2px #24232C inset;
     cursor: pointer;
 }
