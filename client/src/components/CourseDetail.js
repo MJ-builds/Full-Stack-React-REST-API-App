@@ -32,6 +32,7 @@ const CourseDetail = () => {
         });
 
         if (response.status === 204) {
+          navigate("/");
         } else {
           console.error(
             "An error occurred while attempting to delete the course"
@@ -56,7 +57,6 @@ also, for now we are using window.confirm to confirm the deletion of the course
       // call the function to delete the course
       await deleteCourse();
       refetchCourses();
-      navigate(`/`);
     }
   };
 
