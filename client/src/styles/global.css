@@ -93,20 +93,20 @@ header nav a:hover {
 
 .course--label {
     /* modified */
-    color: #E6E5EA;
+    color: #15141b8d;
     font-size: .9rem;
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: .25rem;
 }
 .course--title {
-    color: #35343b;
-    font-weight: 300;
+    color: #ffffff;
+    font-weight: 500;
     font-size: 1.25rem;
 }
 .course--add--module {
     /* modified */
-    background: #38bff84f;
-    color: #15141b8d;
+    background: #24232C;
+    color: #ffffff;
     font-weight: 300;
     font-size: 1.25rem;
 }
@@ -114,8 +114,8 @@ header nav a:hover {
     /* modified */
     width: 20px;
     height: auto;
-    margin-right: 5px;
-    fill: #15141b8d;
+    margin-right: 10px;
+    fill: #38bdf8;
 }
 .course--detail--title {
     padding-bottom: .25rem;
@@ -161,7 +161,7 @@ header nav a:hover {
 
 .created-by {
     font-style: italic;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .actions--bar {
