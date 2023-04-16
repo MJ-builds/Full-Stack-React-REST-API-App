@@ -1,9 +1,16 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useUserContext } from "../context/UserContext";
 import { Navigate } from "react-router-dom";
 
-// Just a simple sign out component that redirects to the home page.
 const UserSignOut = () => {
+  const { signOut } = useUserContext();
+
+  /* Once the user clicks the link on Header and redirects to /signout, 
+  the useEffect hook will call the signOut function and user will be signed out */
+  useEffect(() => {
+    signOut();
+  }, [signOut]);
+
   return <Navigate to="/" />;
 };
 

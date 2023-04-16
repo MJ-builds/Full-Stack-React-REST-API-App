@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 is signed in or not, displays the appropriate navigation links 
 (First Name Last Name / Sign Out or sign In / Sign Out). */
 const Header = () => {
-  const { authenticatedUser, signOut } = useUserContext();
+  const { authenticatedUser } = useUserContext();
 
   return (
     <header>
@@ -24,7 +24,7 @@ const Header = () => {
                 !
               </li>
               <li>
-                <Link to="/signout" onClick={signOut}>
+                <Link to="/signout">
                   Sign Out
                 </Link>
               </li>
