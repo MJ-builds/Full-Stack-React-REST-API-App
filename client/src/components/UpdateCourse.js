@@ -38,7 +38,7 @@ const UpdateCourse = () => {
       );
     }
     setLoading(false);
-  }, [course]);
+  }, [authenticatedUser, course]);
 
   if (loading) {
     return <p>Loading...</p>;
