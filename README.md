@@ -1,5 +1,7 @@
 # Full-Stack-React-REST-API-App
 
+## Note: change the 'BaseURL' in apiClient.js to "http://localhost:5000/api" in order to run and test locally.
+
 
 ## Getting Started with Create React App
 
