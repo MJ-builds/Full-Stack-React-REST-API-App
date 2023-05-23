@@ -6,7 +6,7 @@ import axios from "axios";
 
 //NB: CHANGE BELOW ADDRESS TO http://localhost:5000/api IF YOU ARE TESTING OUT ON YOUR LOCAL MACHINE
 const apiClient = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://full-stack-react-rest-api-app-9l7a.vercel.app/api",
 });
 
 export default apiClient;
