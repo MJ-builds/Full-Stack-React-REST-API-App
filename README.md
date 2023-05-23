@@ -1,7 +1,5 @@
 # Full-Stack-React-REST-API-App
 
-View at: https://mj-builds-full-stack-p10.up.railway.app/
-
 ## Note: change the 'BaseURL' in apiClient.js to "http://localhost:5000/api" in order to run and test locally.
 
 
